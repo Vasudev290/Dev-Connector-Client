@@ -7,8 +7,9 @@ import { BASE_URL } from "../utils/constents";
 
 const Login = () => {
   //Local State
-  const [emailId, setEmailId] = useState("");
-  const [password, setPassword] = useState("");
+  const [emailId, setEmailId] = useState("vasudev@gmail.com");
+  const [password, setPassword] = useState("vasudevP@12345 ");
+  const [errorMessage, setErrorMessage] = useState("");
 
   //Dispatch
   const dispatch = useDispatch();
@@ -30,7 +31,7 @@ const Login = () => {
       dispatch(addUser(loggedUser.data.Login_User_Details));
       navigate("/feed");
     } catch (error) {
-      throw new Error(error);
+      setErrorMessage(error?.response?.data?.error || "Something went wrong!");
     }
   };
   return (
@@ -56,6 +57,7 @@ const Login = () => {
               />
             </fieldset>
           </div>
+          <p className="text-red-500 text-center font-bold">{errorMessage}</p>
           <div className="card-actions justify-center">
             <button className="btn btn-primary m-2" onClick={handleLogin}>
               Login

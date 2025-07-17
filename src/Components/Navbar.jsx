@@ -1,9 +1,33 @@
+import axios from "axios";
 import React from "react";
-import { useSelector } from "react-redux";
-import { Link } from "react-router-dom";
+import { useDispatch, useSelector } from "react-redux";
+import { Link, useNavigate } from "react-router-dom";
+import { BASE_URL } from "../utils/constents";
+import { removeUser } from "../Slices/userSlices";
 
 const Navbar = () => {
+  //useSelector
   const userData = useSelector((state) => state.user);
+
+  //Dispatch
+  const dispatch = useDispatch();
+
+  //Navigate
+  const navigate = useNavigate();
+
+  //HandleLogout
+  const handleLogout = async () => {
+    try {
+      await axios.post(BASE_URL + "/logout", {
+        withCredentials: true,
+      });
+      dispatch(removeUser());
+      return navigate("/login");
+    } catch (error) {
+      throw new Error(error);
+    }
+  };
+
   return (
     <div className="navbar bg-base-300 shadow-sm">
       <div className="flex-1">
@@ -11,7 +35,7 @@ const Navbar = () => {
           <img
             src="https://t3.ftcdn.net/jpg/03/21/60/14/360_F_321601471_5jOdjP9lF9MdYHErS2FQH0o1qgrVG3pC.jpg"
             alt="Dev-Connector Logo"
-            className="h-8 w-8 mr-2 object-contain rounded" 
+            className="h-8 w-8 mr-2 object-contain rounded"
             onError={(e) => {
               e.target.onerror = null;
               e.target.src = "https://placehold.co/32x32/a855f7/ffffff?text=DC";
@@ -22,7 +46,9 @@ const Navbar = () => {
       </div>
       {userData && (
         <div className="flex gap-2">
-          <div className="form-control flex items-center">Welcome, {userData.firstName}</div>
+          <div className="form-control flex items-center">
+            Welcome, {userData.firstName}
+          </div>
           <div className="dropdown dropdown-end mx-3">
             <div
               tabIndex={0}
@@ -47,7 +73,7 @@ const Navbar = () => {
                 <a>Settings</a>
               </li>
               <li>
-                <a>Logout</a>
+                <a onClick={handleLogout}>Logout</a>
               </li>
             </ul>
           </div>
@@ -58,3 +84,4 @@ const Navbar = () => {
 };
 
 export default Navbar;
+ 
