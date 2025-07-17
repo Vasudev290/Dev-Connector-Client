@@ -35,25 +35,25 @@ const Login = () => {
     }
   };
   return (
-    <div className="flex justify-center my-20">
-      <div className="card bg-base-300 w-96 shadow-sm h-80">
+    <div className="flex justify-center my-10">
+      <div className="card bg-base-300 w-80 shadow-sm">
         <div className="card-body">
           <h2 className="card-title justify-center">Login</h2>
           <div>
-            <fieldset className="fieldset py-2">
+            <fieldset className="fieldset py-1">
               <legend className="fieldset-legend">Email</legend>
               <input
                 type="text"
                 value={emailId}
                 onChange={(e) => setEmailId(e.target.value)}
-                className="input pb-2"
+                className="input pb-1"
               />
               <legend className="fieldset-legend">Password</legend>
               <input
                 type="text"
                 value={password}
                 onChange={(e) => setPassword(e.target.value)}
-                className="input pb-2"
+                className="input pb-1"
               />
             </fieldset>
           </div>
