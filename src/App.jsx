@@ -5,6 +5,7 @@ import Profile from "./Pages/Profile";
 import Feed from "./Pages/Feed";
 import Connections from "./Pages/Connections";
 import Requests from "./Pages/Requests";
+import Signup from "./Pages/SignUp";
 
 const App = () => {
   return (
@@ -12,6 +13,7 @@ const App = () => {
       <BrowserRouter basename="/">
         <Routes>
           <Route path="/" element={<Body />}>
+            <Route path="/signup" element={<Signup />} />
             <Route path="/login" element={<Login />} />
             <Route path="/profile" element={<Profile />} />
             <Route path="/feed" element={<Feed />} />

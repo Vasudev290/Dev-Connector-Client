@@ -7,9 +7,10 @@ import { BASE_URL } from "../utils/constents";
 
 const Login = () => {
   //Local State
-  const [emailId, setEmailId] = useState("vasudev@gmail.com");
-  const [password, setPassword] = useState("vasudevP@12345");
+  const [emailId, setEmailId] = useState("");
+  const [password, setPassword] = useState("");
   const [errorMessage, setErrorMessage] = useState("");
+  const [isLoginFrom, setIsLoginForm] = useState(true);
 
   //Dispatch
   const dispatch = useDispatch();
@@ -34,6 +35,14 @@ const Login = () => {
       setErrorMessage(error?.response?.data?.error || "Something went wrong!");
     }
   };
+
+  //Handle toggle
+  const handleToggleForm = () => {
+    const newValue = !isLoginFrom;
+    setIsLoginForm(newValue);
+    navigate(newValue ? "/login" : "/signup");
+  };
+
   return (
     <div className="flex justify-center my-10">
       <div className="card bg-base-300 w-80 shadow-sm">
@@ -50,7 +59,7 @@ const Login = () => {
               />
               <legend className="fieldset-legend">Password</legend>
               <input
-                type="text"
+                type="password"
                 value={password}
                 onChange={(e) => setPassword(e.target.value)}
                 className="input pb-1"
@@ -63,6 +72,14 @@ const Login = () => {
               Login
             </button>
           </div>
+          <p
+            className="text-center font-bold cursor-pointer text-blue-500 hover:underline"
+            onClick={handleToggleForm}
+          >
+            {isLoginFrom
+              ? "New User? Sign Up Here!"
+              : "Existing User? Login Here"}
+          </p>
         </div>
       </div>
     </div>

@@ -33,13 +33,10 @@ const Navbar = () => {
       <div className="flex-1">
         <Link to="/feed" className="btn btn-ghost text-xl">
           <img
-            src="https://t3.ftcdn.net/jpg/03/21/60/14/360_F_321601471_5jOdjP9lF9MdYHErS2FQH0o1qgrVG3pC.jpg"
+            src="https://i.pinimg.com/736x/f8/4a/e3/f84ae37ddc41832d9c0a67b622f1b19e.jpg"
             alt="Dev-Connector Logo"
             className="h-8 w-8 mr-2 object-contain rounded"
-            onError={(e) => {
-              e.target.onerror = null;
-              e.target.src = "https://placehold.co/32x32/a855f7/ffffff?text=DC";
-            }}
+            
           />
           DevConnector
         </Link>

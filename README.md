@@ -29,3 +29,4 @@
 - New Page - see all my connection Request
 - feature -Accept/Reject Connect Request
 - Send / ignored the user card from thr feed
+- Added signup form & some bug fixes

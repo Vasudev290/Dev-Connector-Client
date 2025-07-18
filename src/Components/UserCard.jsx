@@ -34,7 +34,7 @@ const UserCard = (props) => {
           <h2 className="card-title">{firstName + " " + lastName}</h2>
           <p>{age + ",  " + gender}</p>
           <p>
-            <strong>{skills.join(", ")}</strong>
+            <strong>{skills}</strong>
           </p>
           <p>{about}</p>
           <div className="card-actions justify-center my-4">
