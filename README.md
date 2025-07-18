@@ -28,3 +28,4 @@
 - New Page - see all my connections
 - New Page - see all my connection Request
 - feature -Accept/Reject Connect Request
+- Send / ignored the user card from thr feed

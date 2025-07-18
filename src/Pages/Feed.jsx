@@ -27,10 +27,17 @@ const Feed = () => {
   useEffect(() => {
     getFeedData();
   }, []);
+  if (!feedData) return;
+  if (feedData.length < 0)
+    return (
+      <h1 className="text-3xl font-semibold text-gray-400">
+        No new users found!
+      </h1>
+    );
   return (
     feedData && (
-      <div className="flex justify-center my-10">
-        <UserCard user={feedData[1]} />
+      <div className="flex justify-center my-6">
+        <UserCard user={feedData[0]} />
       </div>
     )
   );
