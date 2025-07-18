@@ -2,12 +2,16 @@ import axios from "axios";
 import { BASE_URL } from "../utils/constents";
 import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { addRequestData } from "../Slices/requestSlices";
+import { addRequestData, removeRequestData } from "../Slices/requestSlices";
 
 const Requests = () => {
+  //disptach
   const dispatch = useDispatch();
+
+  //subscribe store
   const requests = useSelector((state) => state.requests);
 
+  //fetch Request Data
   const fetchRequestData = async () => {
     try {
       const res = await axios.get(BASE_URL + "/user/requests/received", {
@@ -21,6 +25,19 @@ const Requests = () => {
     }
   };
 
+  //Review the Request
+  const reviewRequest = async (status, _id) => {
+    try {
+      await axios.post(
+        BASE_URL + "/request/review/" + status + "/" + _id,
+        {},
+        { withCredentials: true }
+      );
+      dispatch(removeRequestData(_id));
+    } catch (error) {
+      throw new Error(error);
+    }
+  };
   useEffect(() => {
     fetchRequestData();
   }, []);
@@ -75,8 +92,18 @@ const Requests = () => {
                 )}
               </div>
               <div className="flex gap-2">
-                <button className="btn btn-secondary">Reject</button>
-                <button className="btn btn-success">Accept</button>
+                <button
+                  className="btn btn-secondary"
+                  onClick={() => reviewRequest("rejected", request._id)}
+                >
+                  Reject
+                </button>
+                <button
+                  className="btn btn-success"
+                  onClick={() => reviewRequest("accepted", request._id)}
+                >
+                  Accept
+                </button>
               </div>
             </div>
           );
