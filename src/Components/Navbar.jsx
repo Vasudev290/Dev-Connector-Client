@@ -31,7 +31,7 @@ const Navbar = () => {
   return (
     <div className="navbar bg-base-300 shadow-sm">
       <div className="flex-1">
-        <Link to="/" className="btn btn-ghost text-xl">
+        <Link to="/feed" className="btn btn-ghost text-xl">
           <img
             src="https://t3.ftcdn.net/jpg/03/21/60/14/360_F_321601471_5jOdjP9lF9MdYHErS2FQH0o1qgrVG3pC.jpg"
             alt="Dev-Connector Logo"
@@ -70,7 +70,7 @@ const Navbar = () => {
                 </Link>
               </li>
               <li>
-                <a>Settings</a>
+                <Link to="/connections">Connections</Link>
               </li>
               <li>
                 <a onClick={handleLogout}>Logout</a>
