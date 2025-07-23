@@ -1,1 +1,6 @@
- export const BASE_URL = "/api";
+//In Production
+//export const BASE_URL = "/api";
+
+//dev
+export const BASE_URL =
+  location.hostname === "localhost" ? "http://localhost:6969" : "/api";
