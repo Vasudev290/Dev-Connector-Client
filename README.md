@@ -70,17 +70,19 @@
     Frontend = http://13.236.9.103/
     Backend = http://13.236.9.103:6969/
 
-    Domain name = devtinder.com => http://13.236.9.103/
+    Domain name = devconnector.com => http://13.236.9.103/
 
-    Frontend = devtinder.com
-    Backend = devtinder.com:6969 => devtinder.com/api
+    Frontend = devconnector.com
+    Backend = devconnector.com:6969 => devconnector.com/api
 
     nginx config :
 
     server_name 13.236.9.103;
 
-    location /api/ {
-        proxy_pass http://localhost:6969/;  # Pass the request to the Node.js app
+    
+
+    location /api {
+        proxy_pass http://localhost:6969;  # Pass the request to the Node.js app
         proxy_http_version 1.1;
         proxy_set_header Upgrade $http_upgrade;
         proxy_set_header Connection 'upgrade';
