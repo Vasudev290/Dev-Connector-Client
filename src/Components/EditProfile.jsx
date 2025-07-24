@@ -25,7 +25,7 @@ const EditProfile = ({ user }) => {
     setErrorMessage("");
     try {
       const resData = await axios.put(
-        BASE_URL + "/profile/edit",
+        `${BASE_URL}/profile/edit`,
         {
           firstName,
           lastName,
