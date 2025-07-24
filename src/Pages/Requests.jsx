@@ -18,7 +18,6 @@ const Requests = () => {
         withCredentials: true,
       });
       const data = res?.data?.Fetched_Data_Details || [];
-      console.log(data);
       dispatch(addRequestData(data));
     } catch (error) {
       console.error("Error fetching requests:", error);
