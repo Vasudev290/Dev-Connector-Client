@@ -46,12 +46,12 @@
   - npm install -> dependencies install
   - npm run build
   - sudo apt update
-  - sudo apt install nginx
+  - sudo apt install nginx ( sudo apt update, sudo apt install nginx -y, sudo systemctl start nginx, sudo systemctl enable nginx, sudo systemctl status nginx)
   - sudo systemctl start nginx
   - sudo systemctl enable nginx
-  - Copy code from dist(build files) to /var/www/html/ || sudo scp -r dist/\* /var/www/html/
-
+  - Copy code from dist(build files) to /var/www/html/ 
   - sudo scp -r dist/\* /var/www/html/
+  - go to security set the in-boundary to :80 and save the rules
   - Enable port :80 of your instance
 
 - Backend
