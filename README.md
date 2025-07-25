@@ -49,8 +49,8 @@
   - sudo apt install nginx ( sudo apt update, sudo apt install nginx -y, sudo systemctl start nginx, sudo systemctl enable nginx, sudo systemctl status nginx)
   - sudo systemctl start nginx
   - sudo systemctl enable nginx
-  - Copy code from dist(build files) to /var/www/html/ 
-  - sudo scp -r dist/* /var/www/html/
+  - Copy code from dist(build files) to /var/www/html/
+  - sudo scp -r dist/\* /var/www/html/
   - go to security set the in-boundary to :80 and save the rules
   - Enable port :80 of your instance
 
@@ -79,7 +79,7 @@
 
     server_name 13.236.9.103;
 
-    
+
 
     location /api {
         proxy_pass http://localhost:6969;  # Pass the request to the Node.js app
@@ -114,3 +114,16 @@
 - Write code for SESClient
 - Write code for Sending email address
 - Make the email dynamic by passing more params to the run function
+
+# Scheduling cron jobs in NodeJS
+
+- Installing node-cron
+- Learning about cron expressions syntax - crontab.guru
+- Schedule a job
+- date-fns
+- Find all the unique email Id who have got connection Request in previous day
+- Send Email
+- Explore queue mechanim to send bulk emails
+- Amazon SES Bulk Emails
+- Make sendEmail function dynamic
+- bee-queue & bull npm packages
