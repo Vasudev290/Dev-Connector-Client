@@ -6,6 +6,11 @@ import Feed from "./Pages/Feed";
 import Connections from "./Pages/Connections";
 import Requests from "./Pages/Requests";
 import Signup from "./Pages/SignUp";
+import TermsAndConditions from "./FooterPages/TermsAndConditions";
+import CancellationRefund from "./FooterPages/CancellationRefund";
+import ShippingPolicy from "./FooterPages/ShippingPolicy";
+import ContactUs from "./FooterPages/ContactUs";
+import PrivacyPolicy from "./FooterPages/PrivacyPolicy";
 
 const App = () => {
   return (
@@ -19,6 +24,17 @@ const App = () => {
             <Route path="/feed" element={<Feed />} />
             <Route path="/connections" element={<Connections />} />
             <Route path="/requests" element={<Requests />} />
+            <Route path="/privacy-policy" element={<PrivacyPolicy />} />
+            <Route
+              path="/terms-and-conditions"
+              element={<TermsAndConditions />}
+            />
+            <Route
+              path="/cancellation-refund-policy"
+              element={<CancellationRefund />}
+            />
+            <Route path="/shipping-policy" element={<ShippingPolicy />} />
+            <Route path="/contact-us" element={<ContactUs />} />
           </Route>
         </Routes>
       </BrowserRouter>

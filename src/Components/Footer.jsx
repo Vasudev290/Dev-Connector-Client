@@ -1,4 +1,4 @@
-import React from "react";
+import { Link } from "react-router-dom";
 
 const Footer = () => {
   return (
@@ -51,6 +51,11 @@ const Footer = () => {
             <path d="M9 8h-3v4h3v12h5v-12h3.642l.358-4h-4v-1.667c0-.955.192-1.333 1.115-1.333h2.885v-5h-3.808c-3.596 0-5.192 1.583-5.192 4.615v3.385z"></path>
           </svg>
         </a>
+        <Link to="/privacy-policy">Privacy</Link>
+        <Link to="/terms-and-conditions">Terms</Link>
+        <Link to="/cancellation-refund-policy">Refunds</Link>
+        <Link to="/shipping-policy">Shipping</Link>
+        <Link to="/contact-us">Contact</Link>
       </nav>
     </footer>
   );
