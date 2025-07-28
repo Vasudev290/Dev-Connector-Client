@@ -50,7 +50,7 @@
   - sudo systemctl start nginx
   - sudo systemctl enable nginx
   - Copy code from dist(build files) to /var/www/html/
-  - sudo scp -r dist/* /var/www/html/
+  - sudo scp -r dist/\* /var/www/html/
   - go to security set the in-boundary to :80 and save the rules
   - Enable port :80 of your instance
 
@@ -127,3 +127,20 @@
 - Amazon SES Bulk Emails
 - Make sendEmail function dynamic
 - bee-queue & bull npm packages
+
+# Razorpay Payment Gateway Inegration
+
+- Sign up on Razorpay & complete KYC
+- Cerated a UI for premium page
+- Creating an API for create order in backend
+- added my key and secret in env file
+- Intialized Razorpay in utils
+- creating order on Razorpay
+- create Schema and model
+- saved the order in payments collection
+- make the API dynamic
+- Setup RRazorpay webhook on your live APi
+- Ref - https://github.com/razorpay/razorpay-node/tree/master/documents
+- Ref - https://razorpay.com/docs/payments/server-integration/nodejs/integration-steps/#integrate-with-razorpay-payment-gateway
+- Ref - https://razorpay.com/docs/webhooks/validate-test/
+- Ref - https://razorpay.com/docs/webhooks/payloads/payments/

@@ -11,6 +11,7 @@ import CancellationRefund from "./FooterPages/CancellationRefund";
 import ShippingPolicy from "./FooterPages/ShippingPolicy";
 import ContactUs from "./FooterPages/ContactUs";
 import PrivacyPolicy from "./FooterPages/PrivacyPolicy";
+import Premium from "./Pages/Premium";
 
 const App = () => {
   return (
@@ -24,6 +25,7 @@ const App = () => {
             <Route path="/feed" element={<Feed />} />
             <Route path="/connections" element={<Connections />} />
             <Route path="/requests" element={<Requests />} />
+            <Route path="/premium" element={<Premium />} />
             <Route path="/privacy-policy" element={<PrivacyPolicy />} />
             <Route
               path="/terms-and-conditions"
