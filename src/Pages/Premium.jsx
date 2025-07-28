@@ -5,48 +5,71 @@ import { useEffect, useState } from "react";
 const Premium = () => {
   //local Variable
   const [isUserPremium, setIsUserPremium] = useState(false);
+
+  const verifyPremiumUser = async () => {
+    try {
+      const response = await axios.get(`${BASE_URL}/payment/premium/verify`, {
+        withCredentials: true,
+      });
+      if (response.data && response.data.isPremium === true) {
+        setIsUserPremium(true);
+      } else {
+        setIsUserPremium(false);
+      }
+    } catch (error) {
+      console.error("Error verifying premium user:", error);
+      setIsUserPremium(false);
+    }
+  };
+
   useEffect(() => {
     verifyPremiumUser();
   }, []);
-  const verifyPremiumUser = async () => {
-    const response = await axios.get(`${BASE_URL}/premium/verify`, {
-      withCredentials: true,
-    });
-    if (response.data.isPremium) {
-      setIsUserPremium(true);
-    }
-  };
-  const handleMembershipPurchase = async (type) => {
-    const order = await axios.post(
-      `${BASE_URL}/payment/create-order`,
-      { membershipType: type },
-      { withCredentials: true }
-    );
 
-    const { orderId, amount, currency, keyId, notes } = order.data;
-    const options = {
-      key: keyId,
-      amount,
-      currency,
-      name: "Dev Connector",
-      description: `${type} Membership Payment`,
-      order_id: orderId,
-      prefill: {
-        name: notes.firstName,
-        email: notes.emailId,
-      },
-      theme: {
-        color: "#F37254",
-      },
-      handler: verifyPremiumUser,
-    };
-    const rzp = new window.Razorpay(options);
-    rzp.open();
+  const handleMembershipPurchase = async (type) => {
+    try {
+      const order = await axios.post(
+        `${BASE_URL}/payment/create-order`,
+        { membershipType: type },
+        { withCredentials: true }
+      );
+
+      const { orderId, amount, currency, keyId, notes } = order.data;
+      const options = {
+        key: keyId,
+        amount,
+        currency,
+        name: "Dev Connector",
+        description: `${type} Membership Payment`,
+        order_id: orderId,
+        prefill: {
+          name: notes.firstName,
+          email: notes.emailId,
+        },
+        theme: {
+          color: "#F37254",
+        },
+        handler: async (response) => {
+          console.log(
+            "Razorpay payment successful. Re-verifying premium status...",
+            response
+          );
+          setTimeout(async () => {
+            await verifyPremiumUser();
+          }, 1500);
+        },
+      };
+      const rzp = new window.Razorpay(options);
+      rzp.open();
+    } catch (error) {
+      console.error("Error handling membership purchase:", error);
+      alert("Payment initiation failed. Please try again.");
+    }
   };
 
   return isUserPremium ? (
     <h1 className="font-bold text-3xl flex justify-center m-52">
-      You're Are already a Premium User
+      You're already a Premium User
     </h1>
   ) : (
     <div className="m-10">
