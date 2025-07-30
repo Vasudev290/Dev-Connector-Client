@@ -12,6 +12,7 @@ import ShippingPolicy from "./FooterPages/ShippingPolicy";
 import ContactUs from "./FooterPages/ContactUs";
 import PrivacyPolicy from "./FooterPages/PrivacyPolicy";
 import Premium from "./Pages/Premium";
+import Chat from "./Pages/Chat";
 
 const App = () => {
   return (
@@ -26,6 +27,7 @@ const App = () => {
             <Route path="/connections" element={<Connections />} />
             <Route path="/requests" element={<Requests />} />
             <Route path="/premium" element={<Premium />} />
+            <Route path="/chat/:userName/:toUserId" element={<Chat />} />
             <Route path="/privacy-policy" element={<PrivacyPolicy />} />
             <Route
               path="/terms-and-conditions"
